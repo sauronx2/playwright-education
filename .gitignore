@@ -86,3 +86,10 @@ typings/
 # System files
 Thumbs.db
 Desktop.ini
+
+.screenshots
+*.png
+*.jpg
+*.jpeg
+
+.env
