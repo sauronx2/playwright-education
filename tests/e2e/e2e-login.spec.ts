@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test.describe.parallel.only('Login / Logout Flow', () => {
+test.describe.parallel('Login / Logout Flow', () => {
   // Before hook
   test.beforeEach(async ({ page }) => {
     await page.goto('http://zero.webappsecurity.com/index.html')

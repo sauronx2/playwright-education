@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { loadHomePage, assertTitle } from '../helpers'
 
-test.describe.parallel.only('My first test suite', () => {
+test.describe.parallel('My first test suite', () => {
   test.skip('Selectors', async ({ page }) => {
     // text
     await page.click('text=some text')
@@ -84,5 +84,3 @@ test.describe.parallel.only('My first test suite', () => {
     await assertTitle(page)
   })
 })
-
-// test.describe.parallel.only('Hooks', () => {})
