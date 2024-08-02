@@ -1,4 +1,4 @@
-import { PlaywrightTestConfig } from '@playwright/test'
+import { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
   workers: 8,
@@ -38,8 +38,8 @@ const config: PlaywrightTestConfig = {
       },
     ],
   ],
-}
+};
 
-console.log(`Running tests with ${config.workers} workers`)
+console.log(`Running tests with ${config.workers} workers`);
 
-export default config
+export default config;
