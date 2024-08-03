@@ -87,7 +87,7 @@ typings/
 Thumbs.db
 Desktop.ini
 
-.screenshots
+/screenshots
 *.png
 *.jpg
 *.jpeg
