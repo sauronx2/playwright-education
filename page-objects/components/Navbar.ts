@@ -1,5 +1,5 @@
-import { expect, Locator, Page } from '@playwright/test';
-import { selectTab } from 'utils/tabUtils';
+import { Locator, Page } from '@playwright/test';
+import { selectTab } from 'utils/TabUtils';
 
 export enum NavbarTabEnum {
   ACCOUNT_SUMMARY = 'Account Summary',

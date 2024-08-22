@@ -8,7 +8,9 @@
     "rootDir": "./",
     "baseUrl": "./",
     "paths": {
-      "page-objects/*": ["page-objects/*"]
+      "@fixtures/*": ["tests/fixtures/*"],
+      "@components/*": ["page-objects/components/*"],
+      "@page-objects/*": ["page-objects/*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,

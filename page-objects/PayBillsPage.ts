@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { selectTab } from '../utils/tabUtils';
+import { selectTab } from '../utils/TabUtils';
 import { DropdownUtils } from '../utils/DropdownUtils';
 
 export enum PayBillsTabEnum {
