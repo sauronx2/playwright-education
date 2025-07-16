@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { Navbar, NavbarTabEnum } from 'page-objects/components/Navbar';
 import { HomePage } from 'page-objects/HomePage';
 import { LoginPage } from 'page-objects/LoginPage';
@@ -22,7 +22,7 @@ test.describe.parallel('Currency Exchange Form', () => {
     await page.goto('http://zero.webappsecurity.com/bank/account-summary.html');
   });
 
-  test('Should make currency exchange', async ({ page }) => {
+  test('Should make currency exchange', async () => {
     await navbar.selectNavbarTab(NavbarTabEnum.PAY_BILLS);
     await payBillsPage.selectPayBillsTab(PayBillsTabEnum.PURCHASE_FOREIGN_CURRENCY);
     await payBillsPage.selectCurrency(CurrencyEnum.EUR);

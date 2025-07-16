@@ -15,11 +15,11 @@ test.describe.parallel('Visual Regression Testing Example', () => {
     await homePage.signIn();
   });
 
-  test('Login Form', async ({ page }) => {
+  test('Login Form', async () => {
     await ScreenshotUtils.compareScreenshotToMatchSnapshot(loginPage.loginForm(), 'login-form.png');
   });
 
-  test('Single Element Snapshot', async ({ page }) => {
+  test('Single Element Snapshot', async () => {
     await loginPage.login('Fail', 'some invalid password');
     await ScreenshotUtils.compareScreenshotToMatchSnapshot(loginPage.errorMessage(), 'login-error.png');
   });
