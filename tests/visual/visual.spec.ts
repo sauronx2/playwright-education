@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@fixtures/fixtures';
 import { ScreenshotUtils } from 'utils/ScreenshotUtils';
 
 test.describe.parallel('Visual Regression Testing Example', () => {

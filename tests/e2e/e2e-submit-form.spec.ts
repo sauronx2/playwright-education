@@ -1,20 +1,12 @@
-import { test } from '@playwright/test';
-import { HomePage } from 'page-objects/HomePage';
-import { FeedbackPage } from 'page-objects/FeedbackPage';
+import { test } from '@fixtures/fixtures';
 
 test.describe.parallel('Feedback Form', () => {
-  let homePage: HomePage;
-  let feedbackPage: FeedbackPage;
-
-  test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);
-    feedbackPage = new FeedbackPage(page);
-
+  test.beforeEach(async ({ homePage }) => {
     await homePage.visit();
     await homePage.openFeedbackLink();
   });
 
-  test('Reset feedback form', async () => {
+  test('Reset feedback form', async ({ feedbackPage }) => {
     await feedbackPage.fillFeedbackForm(
       'some name',
       'some email@email.com',
@@ -25,7 +17,7 @@ test.describe.parallel('Feedback Form', () => {
     await feedbackPage.assertReset();
   });
 
-  test('Submit feedback form', async () => {
+  test('Submit feedback form', async ({ feedbackPage }) => {
     await feedbackPage.fillFeedbackForm(
       'some name',
       'some email@email.com',

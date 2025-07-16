@@ -1,28 +1,16 @@
-import { expect, test } from '@playwright/test';
-import { Navbar, NavbarTabEnum } from 'page-objects/components/Navbar';
-import { HomePage } from 'page-objects/HomePage';
-import { LoginPage } from 'page-objects/LoginPage';
-import { CurrencyEnum, PayBillsPage, PayBillsTabEnum } from 'page-objects/PayBillsPage';
+import { expect, test } from '@fixtures/fixtures';
+import { NavbarTabEnum } from 'page-objects/components/Navbar';
+import { CurrencyEnum, PayBillsTabEnum } from 'page-objects/PayBillsPage';
 
 test.describe.parallel('Currency Exchange Form', () => {
-  let loginPage: LoginPage;
-  let homePage: HomePage;
-  let payBillsPage: PayBillsPage;
-  let navbar: Navbar;
-
-  test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);
-    loginPage = new LoginPage(page);
-    payBillsPage = new PayBillsPage(page);
-    navbar = new Navbar(page);
-
+  test.beforeEach(async ({ page, homePage, loginPage }) => {
     await homePage.visit();
     await homePage.signIn();
     await loginPage.login('username', 'password');
     await page.goto('http://zero.webappsecurity.com/bank/account-summary.html');
   });
 
-  test('Should make currency exchange', async () => {
+  test('Should make currency exchange', async ({ navbar, payBillsPage }) => {
     await navbar.selectNavbarTab(NavbarTabEnum.PAY_BILLS);
     await payBillsPage.selectPayBillsTab(PayBillsTabEnum.PURCHASE_FOREIGN_CURRENCY);
     await payBillsPage.selectCurrency(CurrencyEnum.EUR);

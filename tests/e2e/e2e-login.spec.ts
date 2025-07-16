@@ -1,24 +1,17 @@
-import { expect, test } from '@playwright/test';
-import { LoginPage } from '@page-objects/LoginPage';
-import { HomePage } from '@page-objects/HomePage';
+import { expect, test } from '@fixtures/fixtures';
 
 test.describe.parallel('Login / Logout Flow', () => {
-  let loginPage: LoginPage;
-  let homePage: HomePage;
-  test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPage(page);
-    homePage = new HomePage(page);
-
+  test.beforeEach(async ({ homePage }) => {
     await homePage.visit();
   });
 
-  test('Negative Scenario for login', async () => {
+  test('Negative Scenario for login', async ({ homePage, loginPage }) => {
     await homePage.signIn();
     await loginPage.login('invalid username', 'invalid password');
     await loginPage.assertErrorMessage();
   });
 
-  test('Positive Scenario for login + logout', async ({ page }) => {
+  test('Positive Scenario for login + logout', async ({ page, homePage, loginPage }) => {
     await homePage.signIn();
     await loginPage.login('username', 'password');
     await page.goto('http://zero.webappsecurity.com/bank/account-summary.html');

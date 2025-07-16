@@ -1,14 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from 'page-objects/HomePage';
-import { LoginPage } from 'page-objects/LoginPage';
+import { expect, test } from '@fixtures/fixtures';
 
 test.describe.parallel('Filter Transactions', () => {
-  let loginPage: LoginPage;
-  let homePage: HomePage;
-  test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);
-    loginPage = new LoginPage(page);
-
+  test.beforeEach(async ({ page, homePage, loginPage }) => {
     await homePage.visit();
     await homePage.signIn();
     await loginPage.login('username', 'password');
