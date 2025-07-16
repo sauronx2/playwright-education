@@ -11,32 +11,25 @@ export enum NavbarTabEnum {
 }
 
 export class Navbar {
-  readonly page: Page;
-  readonly accountSummary: Locator;
-  readonly accountActivity: Locator;
-  readonly transferFunds: Locator;
-  readonly payBills: Locator;
-  readonly myMoneyMap: Locator;
-  readonly onlineStatements: Locator;
+  constructor(private readonly page: Page) {}
 
-  constructor(page: Page) {
-    this.page = page;
-    this.accountSummary = page.locator('#account_summary_tab');
-    this.accountActivity = page.locator('#account_activity_tab');
-    this.transferFunds = page.locator('#transfer_funds_tab');
-    this.payBills = page.locator('#pay_bills_tab');
-    this.myMoneyMap = page.locator('#money_map_tab');
-    this.onlineStatements = page.locator('#online_statements_tab');
-  }
+  accountSummary = () => this.page.locator('#account_summary_tab');
+  accountActivity = () => this.page.locator('#account_activity_tab');
+  transferFunds = () => this.page.locator('#transfer_funds_tab');
+  payBills = () => this.page.locator('#pay_bills_tab');
+  myMoneyMap = () => this.page.locator('#money_map_tab');
+  onlineStatements = () => this.page.locator('#online_statements_tab');
+
   async selectNavbarTab(tabName: NavbarTabEnum) {
-    const elements = {
-      [NavbarTabEnum.ACCOUNT_SUMMARY]: this.accountSummary,
-      [NavbarTabEnum.ACCOUNT_ACTIVITY]: this.accountActivity,
-      [NavbarTabEnum.TRANSFER_FUNDS]: this.transferFunds,
-      [NavbarTabEnum.PAY_BILLS]: this.payBills,
-      [NavbarTabEnum.MY_MONEY_MAP]: this.myMoneyMap,
-      [NavbarTabEnum.ONLINE_STATEMENTS]: this.onlineStatements,
+    const elements: Record<NavbarTabEnum, Locator> = {
+      [NavbarTabEnum.ACCOUNT_SUMMARY]: this.accountSummary(),
+      [NavbarTabEnum.ACCOUNT_ACTIVITY]: this.accountActivity(),
+      [NavbarTabEnum.TRANSFER_FUNDS]: this.transferFunds(),
+      [NavbarTabEnum.PAY_BILLS]: this.payBills(),
+      [NavbarTabEnum.MY_MONEY_MAP]: this.myMoneyMap(),
+      [NavbarTabEnum.ONLINE_STATEMENTS]: this.onlineStatements(),
     };
+
     await selectTab(tabName, NavbarTabEnum, elements);
   }
 }

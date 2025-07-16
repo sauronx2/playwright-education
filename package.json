@@ -18,7 +18,10 @@
   "author": "Oleksandr",
   "license": "ISC",
   "dependencies": {
-    "@playwright/test": "^1.45.3",
-    "prettier": "^3.3.3"
+    "prettier": "^3.6.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.0.14"
   }
 }

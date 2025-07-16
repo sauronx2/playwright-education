@@ -11,6 +11,6 @@ test.describe.parallel('Visual Regression Testing Example', () => {
     await page.goto('https://www.example.com');
     const pageElement = page.locator('h1');
 
-    await ScreenshotUtils.compareScreenshotTomatchSnapshot(pageElement, 'page-title.png');
+    await ScreenshotUtils.compareScreenshotToMatchSnapshot(pageElement, 'page-title.png');
   });
 });

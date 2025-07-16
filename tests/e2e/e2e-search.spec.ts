@@ -7,7 +7,7 @@ test.describe.parallel('Search Results', () => {
     await homePage.visit();
     await homePage.searchFor('bank');
 
-    const numberOfLinks = await page.locator('li > a');
+    const numberOfLinks = page.locator('li > a');
     await expect(numberOfLinks).toHaveCount(2);
   });
 });

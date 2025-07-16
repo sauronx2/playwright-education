@@ -23,10 +23,10 @@ test.describe.parallel('Login / Logout Flow', () => {
     await loginPage.login('username', 'password');
     await page.goto('http://zero.webappsecurity.com/bank/account-summary.html');
 
-    const accountSummaryTabNavBar = await page.locator("//ul[@class='nav nav-tabs']");
+    const accountSummaryTabNavBar = page.locator("//ul[@class='nav nav-tabs']");
     await expect(accountSummaryTabNavBar).toBeVisible();
 
-    const accountSummaryTab = await page.locator('#account_summary_tab');
+    const accountSummaryTab = page.locator('#account_summary_tab');
     await expect(accountSummaryTab).toBeVisible();
 
     await page.goto('http://zero.webappsecurity.com/logout.html');

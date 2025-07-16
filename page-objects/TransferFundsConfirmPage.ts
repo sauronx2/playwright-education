@@ -1,11 +1,7 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { Page } from '@playwright/test';
 
 export class TransferFundsConfirmPage {
-  readonly page: Page;
-  readonly alertSuccesMessage: Locator;
+  constructor(private readonly page: Page) {}
 
-  constructor(page: Page) {
-    this.page = page;
-    this.alertSuccesMessage = page.locator("//div[@class='alert alert-success']");
-  }
+  alertSuccessMessage = () => this.page.locator("//div[@class='alert alert-success']");
 }

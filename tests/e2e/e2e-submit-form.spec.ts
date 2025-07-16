@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { HomePage } from 'page-objects/HomePage';
 import { FeedbackPage } from 'page-objects/FeedbackPage';
 
@@ -14,7 +14,7 @@ test.describe.parallel('Feedback Form', () => {
     await homePage.openFeedbackLink();
   });
 
-  test('Reset feedback form', async ({ page }) => {
+  test('Reset feedback form', async () => {
     await feedbackPage.fillFeedbackForm(
       'some name',
       'some email@email.com',
@@ -25,7 +25,7 @@ test.describe.parallel('Feedback Form', () => {
     await feedbackPage.assertReset();
   });
 
-  test('Submit feedback form', async ({ page }) => {
+  test('Submit feedback form', async () => {
     await feedbackPage.fillFeedbackForm(
       'some name',
       'some email@email.com',

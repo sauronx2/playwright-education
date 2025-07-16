@@ -1,32 +1,26 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { Page } from '@playwright/test';
 
 export class HomePage {
-  readonly page: Page;
-  readonly signInButton: Locator;
-  readonly searchBox: Locator;
-  readonly linkFeedback: Locator;
+  constructor(private readonly page: Page) {}
 
-  constructor(page: Page) {
-    this.page = page;
-    this.signInButton = page.locator('#signin_button');
-    this.searchBox = page.locator('#searchTerm');
-    this.linkFeedback = page.locator('#feedback');
-  }
+  signInButton = () => this.page.locator('#signin_button');
+  searchBox = () => this.page.locator('#searchTerm');
+  linkFeedback = () => this.page.locator('#feedback');
 
   async visit() {
     await this.page.goto('http://zero.webappsecurity.com/');
   }
 
   async signIn() {
-    await this.signInButton.click();
+    await this.signInButton().click();
   }
 
   async openFeedbackLink() {
-    this.linkFeedback.click();
+    await this.linkFeedback().click();
   }
 
   async searchFor(phrase: string) {
-    await this.searchBox.fill(phrase);
+    await this.searchBox().fill(phrase);
     await this.page.keyboard.press('Enter');
   }
 }

@@ -27,17 +27,17 @@ test.describe.parallel('Currency Exchange Form', () => {
     await payBillsPage.selectPayBillsTab(PayBillsTabEnum.PURCHASE_FOREIGN_CURRENCY);
     await payBillsPage.selectCurrency(CurrencyEnum.EUR);
 
-    await expect(payBillsPage.todaysSellRate).toContainText('1 euro (EUR)');
+    await expect(payBillsPage.todaySellRate()).toContainText('1 euro (EUR)');
     await payBillsPage.fillAmount('1000');
     await payBillsPage.isInDollars(true);
     await payBillsPage.calculateCoast();
 
-    await expect(payBillsPage.conversionAmount).toContainText('1000.00 U.S. dollar (USD)');
+    await expect(payBillsPage.conversionAmount()).toContainText('1000.00 U.S. dollar (USD)');
 
     await payBillsPage.purchase();
 
-    const message = await payBillsPage.alertContentMessage;
-    await expect(message).toBeVisible();
+    const message = payBillsPage.alertContentMessage();
+    await expect.soft(message).toBeVisible();
     await expect(message).toContainText('Foreign currency cash was successfully purchased.');
   });
 });
